@@ -88,8 +88,11 @@ function MM_swapImage() { //v3.0
                         <span class="glyphicon glyphicon-download"></span> &nbsp; Update
                     </a>
 
-                     <a onclick="cancel();" class="btn btn-primary btn-sm">
-                        <span class="glyphicon glyphicon-print"></span> &nbsp; CANCEL
+                     <a onclick="cancel();" class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-remove"></span> &nbsp; CANCEL
+                    </a>
+                    <a onclick="NewWindow('search_service_register.php?stname=mrn', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-info btn-sm">
+                        <span class="glyphicon glyphicon-search"></span> &nbsp; FIND MRN
                     </a>
 
                 </div>
@@ -751,6 +754,7 @@ function MM_swapImage() { //v3.0
             This functions is called if the service sucessfully returns some data in JSON object
          */
         function SuccessFunc(result) {
+            console.log(result);
             if (result.ErrorCode == 0) {
                 /*  Display BMP data in image tag
                     BMP data is in base 64 format 
@@ -804,6 +808,8 @@ function MM_swapImage() { //v3.0
                 if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                     fpobject = JSON.parse(xmlhttp.responseText);
                     successCall(fpobject);
+                    console.log(xmlhttp);
+
                 }
                 else if (xmlhttp.status == 404) {
                     failCall(xmlhttp.status)

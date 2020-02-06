@@ -93,14 +93,8 @@ function save_inv() {
         document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Paid Date Not Enterd</span></div>";
         return false;
     }
-    if (document.getElementById('serino_txt').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Serial No Not Enterd</span></div>";
-        return false;
-    }
-    if (document.getElementById('mdate_txt').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Medical Date Is Not Enterd</span></div>";
-        return false;
-    }
+    
+ 
     if (document.getElementById('pno_txt').value == "") {
         document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Passport No Is Not Enterd</span></div>";
         return false;
@@ -113,18 +107,18 @@ function save_inv() {
         document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Delivery Date Is Not Enterd</span></div>";
         return false;
     }
-    if (document.getElementById('medamt_txt').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Medical Amount Is Not Enterd</span></div>";
-        return false;
-    }
-    if (document.getElementById('paidamt_txt').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Paid Amount Is Not Enterd</span></div>";
-        return false;
-    }
-    if (document.getElementById('balpay_txt').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Balance Is Not Enterd</span></div>";
-        return false;
-    }
+    // if (document.getElementById('medamt_txt').value == "") {
+    //     document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Medical Amount Is Not Enterd</span></div>";
+    //     return false;
+    // }
+    // if (document.getElementById('paidamt_txt').value == "") {
+    //     document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Paid Amount Is Not Enterd</span></div>";
+    //     return false;
+    // }
+    // if (document.getElementById('balpay_txt').value == "") {
+    //     document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Balance Is Not Enterd</span></div>";
+    //     return false;
+    // }
 
  
     var url = "medical_delivery_data.php";
@@ -182,14 +176,14 @@ function delivered() {
         document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Paid Date Not Enterd</span></div>";
         return false;
     }
-    if (document.getElementById('serino_txt').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Serial No Not Enterd</span></div>";
-        return false;
-    }
-    if (document.getElementById('mdate_txt').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Medical Date Is Not Enterd</span></div>";
-        return false;
-    }
+    // if (document.getElementById('serino_txt').value == "") {
+    //     document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Serial No Not Enterd</span></div>";
+    //     return false;
+    // }
+    // if (document.getElementById('mdate_txt').value == "") {
+    //     document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Medical Date Is Not Enterd</span></div>";
+    //     return false;
+    // }
     document.getElementById('msg_box').innerHTML = "";
 
 

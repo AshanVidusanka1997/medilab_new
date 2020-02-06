@@ -23,13 +23,13 @@ session_start();
 
                 <div class="form-check">
                   <label class="form-check-label" for="check1">
-                    <input type="radio" class="form-check-input" id="option1" name="option1" value="1" checked>Cash Summery
+                    <input type="checkbox" class="form-check-input" id="option1" name="option1" value="1" checked>Cash Summery
                   </label>
                 </div>
                 <div class="form-group-sm">
                 <div class="form-check">
                   <label class="form-check-label" for="check2">
-                    <input type="radio" class="form-check-input" id="option2" name="option2" value="1">Remedical
+                    <input type="checkbox" class="form-check-input" id="option2" name="option2" value="1">Remedical
                   </label>
                 </div>
             </div>
@@ -38,13 +38,13 @@ session_start();
                  <div class="form-group-sm">
                         <div class="form-check">
                   <label class="form-check-label">
-                    <input type="radio" class="form-check-input" id="option3" name="option3"  value="1" >cash Summery Non VAT
+                    <input type="checkbox" class="form-check-input" id="option3" name="option3"  value="1" >cash Summery Non VAT
                   </label>
                 </div>
                 <div class="form-group-sm">
                 <div class="form-check">
                   <label class="form-check-label" for="check2">
-                    <input type="radio" class="form-check-input" id="option4" name="option4" value="1">Remedical Non VAT
+                    <input type="checkbox" class="form-check-input" id="option4" name="option4" value="1">Remedical Non VAT
                   </label>
 
                 <div class="form-group-sm">

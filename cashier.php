@@ -164,14 +164,8 @@
                         <div class="form-group-sm">
                              <label class="col-sm-1" for="invno">Bank</label>
                             <div class="col-sm-2">
-                                <?php
-                                echo"<select id = \"bank_txt\" class =\"form-control input-sm\">";
-                                $sql = "select * from sregdetails";
-                                foreach ($conn->query($sql) as $row) {
-                                    echo "<b><option value='" . $row["bank"] . "'>" . $row["bank"] . "</option></b>";
-                                }
-                                echo"</select>";
-                                ?>
+
+                             <input type="text" placeholder="Bank" name="bank_txt" id="bank_txt" class="form-control  input-sm">
                             </div>
                            
                             <label class="col-sm-1" for="invno">Refund Date</label>

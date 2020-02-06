@@ -147,6 +147,83 @@ function passcusresult_quot()
 
 
         }
+         if (stname == "barcode") {
+            
+            //opener.document.getElementById('txt_refno').value = obj.txt_refno;
+         opener.document.getElementById('txt_refno').value= vobj.refno;
+         opener.document.getElementById('txt_srdate' ).value= vobj.srdate;
+         opener.document.getElementById('txt_patno' ).value= vobj.patientno;
+         opener.document.getElementById('txt_fname' ).value= vobj.fname;
+         opener.document.getElementById('txt_lname' ).value= vobj.lastname;
+
+
+
+        }
+
+        if (stname == "mrn") {
+            
+            //opener.document.getElementById('txt_refno').value = obj.txt_refno;
+         // opener.document.getElementById('txt_refno').value= vobj.refno;
+         opener.document.getElementById('txt_srdate' ).value= vobj.srdate;
+         opener.document.getElementById('txt_patno' ).value= vobj.patientno;
+         opener.document.getElementById('txt_fname' ).value= vobj.fname;
+         opener.document.getElementById('txt_lname' ).value= vobj.lastname;
+         opener.document.getElementById('txt_ageyrs' ).value= vobj.age_years;
+         opener.document.getElementById('txt_agemnths').value= vobj.age_months; 
+         opener.document.getElementById('txt_dob' ).value= vobj.bdate;
+         opener.document.getElementById('txt_gender').value= vobj.sex; 
+         opener.document.getElementById('txt_nation').value= vobj.nation; 
+         opener.document.getElementById('country_txt').value= vobj.country;
+         opener.document.getElementById('cou_name_txt' ).value= vobj.countryname;
+         opener.document.getElementById('txt_nochld').value= vobj.no_chid; 
+         opener.document.getElementById('txt_lchldage' ).value= vobj.lastchildage;
+         opener.document.getElementById('txt_medicode' ).value= vobj.medicode;
+         opener.document.getElementById('txt_mediname' ).value= vobj.mediname;
+         opener.document.getElementById('txt_medistatus' ).value= vobj.medistatus;
+         opener.document.getElementById('txt_type' ).value= vobj.meditype;
+         opener.document.getElementById('txt_dest' ).value= vobj.dest;
+         opener.document.getElementById('txt_xrayno' ).value= vobj.xrayno;
+         opener.document.getElementById('txt_serino').value= vobj.serino; 
+         opener.document.getElementById('txt_pla_of_iss' ).value= vobj.PLA_OF_IS;
+         opener.document.getElementById('txt_gno').value= vobj.gno; 
+         opener.document.getElementById('txt_posapp' ).value= vobj.POS_APP;
+         opener.document.getElementById('txt_gccno' ).value= vobj.gccno;
+         opener.document.getElementById('txt_cusadd' ).value= vobj.address;
+         opener.document.getElementById('txt_dtofissu' ).value= vobj.dtisu;
+         opener.document.getElementById('txt_time' ).value= vobj.med_time;
+         opener.document.getElementById('txt_rem' ).value= vobj.remaks;
+         opener.document.getElementById('txt_labref').value= vobj.labref; 
+         opener.document.getElementById('txt_newref' ).value= vobj.newref;
+         opener.document.getElementById('txt_fn1' ).value= vobj.finger1;
+         opener.document.getElementById('txt_fn2' ).value= vobj.finger2;
+         opener.document.getElementById('txt_cheqno').value= vobj.cheqno; 
+         opener.document.getElementById('txt_cheqamt' ).value= vobj.cheq_amt;
+         opener.document.getElementById('txt_cheqdt' ).value= vobj.cheq_date;
+         opener.document.getElementById('txt_cash').value= vobj.csh_amt;
+         opener.document.getElementById('txt_bank').value= vobj.bank; 
+         opener.document.getElementById('txt_rfamt').value= vobj.refamt;
+         opener.document.getElementById('txt_rfdt' ).value= vobj.dt_refund;
+         opener.document.getElementById('agname_txt' ).value= vobj.agname;
+
+
+
+         opener.document.getElementById('SerialNumber' ).value= vobj.serialNo;
+         opener.document.getElementById('ImageHeight' ).value= vobj.H;
+         opener.document.getElementById('ImageWidth').value= vobj.W;
+         opener.document.getElementById('ImageDPI').value= vobj.DPI; 
+         opener.document.getElementById('ImageQuality').value= vobj.Quality;
+         opener.document.getElementById('NFIQ' ).value= vobj.NFIQ;
+         opener.document.getElementById('TemplateBase64_txt' ).value= vobj.Tempbase;
+
+         opener.document.getElementById('tmpno').value= vobj.uniq;
+          opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + vobj.img + "\" alt=\"\">";
+
+
+
+        }
+
+
+        
          if (stname == "medi_pri") {
         opener.document.getElementById('TXTREFNO').value = vobj.refno;
 
@@ -179,6 +256,8 @@ function passcusresult_quot()
         opener.document.getElementById('txt_gccno').value = vobj.gno;
 
         opener.document.getElementById('dtcdate').value = vobj.srdate;
+
+         opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + vobj.img + "\" alt=\"\">";
         }
 
         if (stname == "miq") {
@@ -197,6 +276,7 @@ function passcusresult_quot()
         opener.document.getElementById('pno_txt').value = vobj.patientno;
         opener.document.getElementById('name1_txt').value = vobj.fname;
         opener.document.getElementById('name2_txt').value = vobj.lastname;
+        opener.document.getElementById('mdate_txt').value = vobj.srdate;
 
          opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + vobj.img + "\" alt=\"\">";
 

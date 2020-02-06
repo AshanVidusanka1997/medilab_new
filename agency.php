@@ -7,7 +7,7 @@
 
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Agency</h3>
+                <h3 class="box-title">Medical</h3>
             </div>
             <form name= "form1" role="form" class="form-horizontal">
                 <div class="box-body">
@@ -42,9 +42,9 @@
                     <div class="col-md-12">
                         <div class="form-group"></div>
                         <div class="form-group-sm">
-                            <label class="col-sm-1" for="invno">Agency Code</label>
+                            <label class="col-sm-1" for="invno">Medical Code</label>
                             <div class="col-sm-2">
-                                <input type="text" placeholder="Agency Code" id="agn_txt" class="form-control  input-sm" disabled="">
+                                <input type="text" placeholder="Medical Code" id="agn_txt" class="form-control  input-sm" disabled="">
                             </div>
                              <div class="col-sm-2">
                             <input type="text" placeholder=""  id="uniq" class="form-control hidden input-sm">
@@ -52,9 +52,9 @@
                         </div>
                          <div class="form-group"></div>
                         <div class="form-group-sm">
-                              <label class="col-sm-1" for="invno">Medical Type</label>
+                              <label class="col-sm-1" for="invno">Description</label>
                             <div class="col-sm-2">
-                                <input type="text" placeholder="Medical Type" id="mtype_txt" class="form-control  input-sm">
+                                <input type="text" placeholder="Description" id="mtype_txt" class="form-control  input-sm">
                             </div>
                         </div>
 

@@ -118,7 +118,7 @@ $mid = $_GET["txt_ref"];
     <td>' . $row1["passport_no"] . '</td>
     <td>' . $row1["date_of_issue"] . '</td>
     <td>&nbsp</td>
-    <td>Sri Lanka</td>
+    <td></td>
     <td></td>
     <td>&nbsp</td>
     <td>&nbsp</td>

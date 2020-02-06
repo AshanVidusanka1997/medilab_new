@@ -89,17 +89,28 @@ function passcusresult_quot()
               if (stname == "miq") {
 
 
+    
         opener.document.getElementById('cou_name_txt').value = obj.country;
         opener.document.getElementById('pportno_txt').value = obj.passport_no;
         opener.document.getElementById('date_txt').value = obj.medical_date;
         opener.document.getElementById('xrayno_txt').value = obj.xray_no;
          opener.document.getElementById('sex_txt').value = obj.sex;
+          opener.document.getElementById('agency_txt').value = obj.agency;
+           opener.document.getElementById('age_txt').value = obj.age;
+           opener.document.getElementById('subname_txt').value = obj.name;
+          opener.document.getElementById('status_txt').value = obj.status;
+
+            opener.document.getElementById('custrem_txt').value = obj.serial_no;
+
+         
 
          opener.document.getElementById('doctor1_txt').value = obj.remark1;
         opener.document.getElementById('doctor2_txt').value = obj.remark2;
         opener.document.getElementById('doctor3_txt').value = obj.remark3;
         opener.document.getElementById('doctor4_txt').value = obj.remark1_np;
          opener.document.getElementById('doctor5_txt').value = obj.remark2_np;
+
+         //  opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + vobj.img + "\" alt=\"\">";
         
                    
 

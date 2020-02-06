@@ -108,7 +108,7 @@
                             <input type="text" placeholder=""  id="xrayno_txt" class="form-control  input-sm">
                         </div>
 
-                        <label class="col-sm-1" for="c_code">Sub Name</label>
+                        <label class="col-sm-1" for="c_code">Passenger Name</label>
                         <div class="col-sm-2">
                             <input type="text" placeholder=""  id="subname_txt" class="form-control  input-sm">
                         </div>
@@ -266,6 +266,7 @@
                             <!--hidden-->
                         </div>
                     </div>
+                    <div id="getImg" style="margin-left: 800px"></div>
 
                 </div>
 

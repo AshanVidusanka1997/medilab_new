@@ -70,7 +70,7 @@
                                                       <label class="col-sm-1" for="invno">Medical Date</label>
                                                     <div class="col-sm-2">
 
-                                                      <input type="date" placeholder="Medical Date" name="mdate_txt" id="mdate_txt"  class="form-control dt input-sm">
+                                                      <input type="date" placeholder="Medical Date" name="mdate_txt" id="mdate_txt"  class="form-control  input-sm">
                                                     </div>
                                                       <label class="col-sm-1" for="invno">Passport No.</label>
                                                     <div class="col-sm-2">
@@ -102,7 +102,7 @@
                                                 <div class="form-group-sm">
                                                     <label class="col-sm-1" for="invno">Delevery Date</label>
                                                     <div class="col-sm-2">
-                                                        <input type="text" placeholder="Delivery Date" name="dele_txt" id="dele_txt" value="<?php echo date('Y-m-d'); ?>" class="form-control dt input-sm">
+                                                        <input type="date" placeholder="Delivery Date" name="dele_txt" id="dele_txt" class="form-control  input-sm">
 
                                                         
                                                     </div>

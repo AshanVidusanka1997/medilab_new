@@ -43,7 +43,7 @@ if (isset($_GET['url'])) {
     if ($_GET['url'] == "Country") {
         include_once './country.php';      
     }
-    if ($_GET['url'] == "Agency") {
+    if ($_GET['url'] == "Medical") {
         include_once './agency.php';      
     }
     if ($_GET['url'] == "Customer") {
@@ -82,6 +82,14 @@ if (isset($_GET['url'])) {
     }
     if ($_GET['url'] == "change_password") {
         include_once './change_password.php';
+    }
+
+    if ($_GET['url'] == "matching") {
+        include_once './matching.php';
+    }
+
+    if ($_GET['url'] == "BarcodePrint") {
+        include_once './barcode_print.php';
     }
 
     

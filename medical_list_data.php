@@ -70,7 +70,7 @@
         if ($_GET['option1'] == "1") {
             echo "111111111111111";
 
-             $sql = "Select * from sregdetails  ";
+             $sql = "Select * from sregdetails order by newref ";
 
             if ($_GET['option5'] == "1") {
                  echo "6666666";
@@ -79,14 +79,14 @@
                 echo $sql;
             }
         } elseif ( $_GET['option2'] == "1") {
-            $sql = "Select * from sregdetails  ";
+            $sql = "Select * from sregdetails where newref='RC' ";
 
             if ($_GET['option5'] == "1") {
                  echo "77777777777";
                 $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "')  ";
-            }
+            }echo $sql;
 
-            echo "222222222222";
+           // echo "222222222222";
             
         } elseif ($_GET['option3'] == "1") {
             $sql = "Select * from sregdetails  ";
@@ -115,6 +115,9 @@
         $mbrand = "";
 
         while ($row = mysqli_fetch_array($result)) {
+            // if( $mbrand!=$row['newref']){
+            //      $tb .= "<td style=\"text-align: center;\"><b>" . $row['newref'] . "<b></td>";
+            //  }
 
             $tb .= "<tr><td style=\"text-align: center;\">" . $row['labref'] . "</td>";
             $tb .= "<td style=\"text-align: center;\">" . $row['patientno'] . "</td>";
@@ -125,8 +128,11 @@
             $tb .= "<td style=\"text-align: center;\">" . $row['time'] . "</td>";
             $tb .= "<td style=\"text-align: center;\">" . $row['sex'] . "</td>";
 
+           
+
 
             $tb .= "</tr>";
+
         }
         $tb .= "</table>";
 

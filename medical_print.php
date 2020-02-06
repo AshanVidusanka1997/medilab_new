@@ -534,6 +534,7 @@ require_once './connection_sql.php';
                         </div>                    
                     </div>
     </div>
+     <div id="getImg" style="margin-left: 800px"></div>
 
 <!-- tab 4 -->
     <div id="menu3" class="tab-pane fade">
@@ -630,8 +631,9 @@ require_once './connection_sql.php';
                                 <option value="Negative">Negative</option>
                             </select>
                         </div>
+
                     </div>
-      
+     
 
     </div>
 
