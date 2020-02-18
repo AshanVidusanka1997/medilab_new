@@ -76,16 +76,40 @@ if ($_GET["Command"] == "save_item") {
 }
 
 if ($_GET["Command"] == "update") {
+
+       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
     try {
-        $sql = "update customer set name = '" . $_GET['name'] . "' ,address = '" . $_GET['address'] . "' ,dob = '" . $_GET['dob'] . "'  where cid = '" . $_GET['cid'] . "'";
+        $sql = "update customer set custcode ='".$_GET['cust_txt']."',name='".$_GET['name_txt']."',address1='".$_GET['addr1_txt']."',address2='".$_GET['addr2_txt']."', contact='".$_GET['contact_txt']."',opening_bal='".$_GET['openbal_txt']."',opening_dt= '".$_GET['opdate_txt']."',current_bal= '". $_GET['currbal_txt']."', credit_lmt='".$_GET['crlimit_txt']."',telno='".$_GET['telno_txt']."',fax= '".$_GET['fax_txt']."',labourno= '". $_GET['labourno_txt']."' where custcode = '" . $_GET['cust_txt'] . "'";
+
+
+
         $result = $conn->query($sql);
-//        cid = '" . $_GET['cid'] . "',
-        echo "update";
+
+        $conn->commit();
+        echo "Updated";
     } catch (Exception $e) {
         $conn->rollBack();
         echo $e;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 if ($_GET["Command"] == "delete") {

@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 include_once './connection_sql.php';
@@ -9,9 +11,13 @@ include_once './connection_sql.php';
         <link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 
 
-        <title>Search Customer</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css"></link>
-        <script language="JavaScript" src="js/search_service_register.js"></script>
+        <title>Search Countryr</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+            <script language="JavaScript" src="js/search_country_main.js"></script>
+
+
 
     </head>
 
@@ -34,38 +40,41 @@ include_once './connection_sql.php';
                 if (isset($_GET['stname'])) {
                     $stname = $_GET["stname"];
                 }
+                $k = "";
+                if (isset($_GET['k'])) {
+                    $k = $_GET["k"];
+                }
                 ?>
                 <td width="24" ><input type="text" size="20" name="cusno" id="cusno" value=""  class="form-control" tabindex="1" onkeyup="<?php echo "update_cust_list('$stname')"; ?>"/></td>
                 <td width="24" ><input type="text" size="70" id="customername1" value=""  class="form-control" onkeyup="<?php echo "update_cust_list('$stname')"; ?>"/></td>
-                <td width="24" ><input type="text" size="70" id="customername2" value=""  class="form-control" onkeyup="<?php echo "update_cust_list('$stname')"; ?>"/></td>
+               
+               
+     
         </table>    
         <div id="filt_table" class="CSSTableGenerator">  <table width="735"   class="table table-bordered">
-                <tr>
-                    <th>Ref No.</th>
-                    <th>Date</th>
-                    <th>Passport No</th>
-                  
-                </tr>
+                <tr> 
+                   <th>Country Code</th>
+                   <th>Country Name</th>
+               </tr>
                 <?php
-              
-                 $sql = "SELECT * from sregdetails where cancel='0' ";
+                $sql = "SELECT * from country";
+ 
+                $sql = $sql . " order by id";
 
-                $sql = $sql . " order by refno limit 50";
-                
                 $stname = "";
                 if (isset($_GET['stname'])) {
                     $stname = $_GET["stname"];
                 }
 
                 foreach ($conn->query($sql) as $row) {
-                    $cuscode = $row['refno'];
-                    echo "<tr>    
-                              <td onclick=\"custno('$cuscode', '$stname');\">" . $row['refno'] . "</a></td>
-                              <td onclick=\"custno('$cuscode', '$stname');\">" . $row['srdate'] . "</a></td>
-                              <td onclick=\"custno('$cuscode', '$stname');\">" . $row['patientno'] . "</a></td>
-                             
-
-                            </tr>";
+                    $cuscode = $row['c_code'];
+ 
+ 
+                    echo "<tr>                 
+                              <td onclick=\"custno('$cuscode','$k');\">" . $row['c_code'] . "</a></td>
+                              <td onclick=\"custno('$cuscode','$k');\">" . $row['c_name'] . "</a></td>
+                              
+                         </tr>";
                 }
                 ?>
             </table>

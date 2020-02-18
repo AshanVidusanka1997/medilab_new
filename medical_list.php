@@ -33,6 +33,20 @@ session_start();
                   </label>
                 </div>
             </div>
+            <div class="form-group-sm">
+                <div class="form-check">
+                  <label class="form-check-label" for="check2">
+                    <input type="checkbox" class="form-check-input" id="option6" name="option6" value="1">New Medical
+                  </label>
+                </div>
+            </div>
+            <div class="form-group-sm">
+                <div class="form-check">
+                  <label class="form-check-label" for="check2">
+                    <input type="checkbox" class="form-check-input" id="option7" name="option7" value="1">MMR
+                  </label>
+                </div>
+            </div>
                 
                 </div>
                  <div class="form-group-sm">

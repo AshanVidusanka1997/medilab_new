@@ -130,6 +130,7 @@ function passcusresult_quot()
          opener.document.getElementById('txt_rfamt').value= vobj.refamt;
          opener.document.getElementById('txt_rfdt' ).value= vobj.dt_refund;
          opener.document.getElementById('agname_txt' ).value= vobj.agname;
+         opener.document.getElementById('txt_paid' ).value= vobj.paid_amt;
 
 
 
@@ -257,6 +258,8 @@ function passcusresult_quot()
 
         opener.document.getElementById('dtcdate').value = vobj.srdate;
 
+        // opener.document.getElementById('cmbstatus').value = vobj.srdate;
+
          opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + vobj.img + "\" alt=\"\">";
         }
 
@@ -267,6 +270,27 @@ function passcusresult_quot()
         opener.document.getElementById('age_txt').value = vobj.age_years;
         opener.document.getElementById('custrem_txt').value = vobj.remarks;
         opener.document.getElementById('sex_txt').value = vobj.sex;
+        
+    }
+
+    if (stname == "miqs") {
+        opener.document.getElementById('pportno_txt').value = vobj.patientno;
+        opener.document.getElementById('cou_name_txt').value = vobj.countryname;
+        opener.document.getElementById('xrayno_txt').value = vobj.xrayno;
+        opener.document.getElementById('age_txt').value = vobj.age_years;
+        opener.document.getElementById('custrem_txt').value = vobj.remaks;
+        opener.document.getElementById('sex_txt').value = vobj.sex;
+        opener.document.getElementById('status_txt').value = vobj.medistatus;
+        opener.document.getElementById('agency_txt').value = vobj.agname;
+        opener.document.getElementById('date_txt').value = vobj.srdate;
+        opener.document.getElementById('subname_txt').value = vobj.fname + "  " + vobj.lastname;
+        opener.document.getElementById('name_txt').value = vobj.meditype;
+
+        
+
+
+        
+        
         
     }
     if (stname == "medi_deli") {

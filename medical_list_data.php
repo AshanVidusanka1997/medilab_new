@@ -56,58 +56,52 @@
         $tb .= "<tr>";
         $tb .= "<th width=\"70\"  background=\"\">Lab No</th>";
         $tb .= "<th width=\"100\"  background=\"\">PP No</th>";
-        $tb .= "<th width=\"100\"  background=\"\">Name</th>";
+        $tb .= "<th width=\"200\"  background=\"\">Name</th>";
         $tb .= "<th width=\"250\"  background=\"\">Country</th>";
         $tb .= "<th width=\"70\"  background=\"\">Amount</th>";
         $tb .= "<th width=\"180\"  background=\"\">Refund</th>";
         $tb .= "<th width=\"180\"  background=\"\">Balance</th>";
         $tb .= "<th width=\"180\"  background=\"\">Sex</th>";
-//        if(chkbox1){
-//            
-//        }
 
 
-        if ($_GET['option1'] == "1") {
-            echo "111111111111111";
 
-             $sql = "Select * from sregdetails order by newref ";
+        if ($_GET['option1'] == "1") { 
 
+             $sql = "Select * from sregdetails ";
             if ($_GET['option5'] == "1") {
-                 echo "6666666";
-                $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "')  ";
-
-                echo $sql;
+                $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "')  and cancel='0'  order by newref ";
             }
         } elseif ( $_GET['option2'] == "1") {
             $sql = "Select * from sregdetails where newref='RC' ";
 
             if ($_GET['option5'] == "1") {
-                 echo "77777777777";
-                $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "')  ";
-            }echo $sql;
+                $sql .= "and   srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "') and cancel='0' order by labref  ";
+            }           
+        }elseif ( $_GET['option6'] == "1") {
+            $sql = "Select * from sregdetails where newref='NM' ";
+            if ($_GET['option5'] == "1") {
+                $sql .= "and  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "') and cancel='0'  order by labref  ";
+            }           
+        }elseif ( $_GET['option7'] == "1") {
+            $sql = "Select * from sregdetails where newref='MMR' ";
 
-           // echo "222222222222";
-            
+            if ($_GET['option5'] == "1") {
+                $sql .= "and srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "') and cancel='0' order by labref ";
+            }
         } elseif ($_GET['option3'] == "1") {
             $sql = "Select * from sregdetails  ";
-            echo "333333333";
             if ($_GET['option5'] == "1") {
-                 echo "8888888888";
-                $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "')  ";
+
+                $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "')and cancel='0' order by labref   ";
             }
            
         } elseif ($_GET['option4'] == "1") {
             $sql = "Select * from sregdetails  ";
-            echo "44444444444444";
             if ($_GET['option5'] == "1") {
-                 echo "99999999999";
-                $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "')  ";
-            }
-           
+                $sql .= "where  srdate BETWEEN ('" . $_GET['from_date'] . "') AND ('" . $_GET['to_date'] . "') and cancel='0' order by labref    ";
+            }           
         }else {
-             echo "10000000000";
-             $sql = "Select * from sregdetails  ";
-           
+             $sql = "Select * from sregdetails  ";           
         }
 
         $result = mysqli_query($GLOBALS['dbinv'], $sql);
@@ -128,9 +122,7 @@
             $tb .= "<td style=\"text-align: center;\">" . $row['time'] . "</td>";
             $tb .= "<td style=\"text-align: center;\">" . $row['sex'] . "</td>";
 
-           
-
-
+            
             $tb .= "</tr>";
 
         }

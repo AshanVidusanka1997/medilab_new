@@ -95,6 +95,10 @@ function MM_swapImage() { //v3.0
                         <span class="glyphicon glyphicon-search"></span> &nbsp; FIND MRN
                     </a>
 
+                    <a onclick="printcash();" class="btn btn-default btn-sm">
+                        <span class="fa fa-print"></span> &nbsp; Recipt
+                    </a>
+
                 </div>
 
                 <div id="msg_box"  class="span12 text-center"  ></div>
@@ -168,8 +172,8 @@ function MM_swapImage() { //v3.0
                         <label class="col-sm-2" for="invno">Gender</label>
                         <div class='col-sm-2'>
                         <select id="txt_gender" class='form-control input-sm'>
-                            <option value="male" >Male</option>
-                            <option value="female">Female</option>
+                            <option value="Male" >Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                     </div>
@@ -254,48 +258,42 @@ function MM_swapImage() { //v3.0
                                 ?>
                             </div>
 
-                        <label class="col-sm-2" for="invno">Dest</label>
+                        <label class="col-sm-2" for="invno" hidden="">Dest</label>
                         <div class="col-sm-2">
-                            <input type="text" placeholder="Dest" id="txt_dest" class="form-control  input-sm">
+                            <input type="hidden" placeholder="Dest" id="txt_dest" class="form-control  input-sm">
                         </div>
-                        <label class="col-sm-2" for="invno">XRAY No.</label>
+                        <label class="col-sm-2" for="invno " hidden="">XRAY No.</label>
                         <div class="col-sm-2">
-                            <input type="text" placeholder="XRAY No" id="txt_xrayno" class="form-control  input-sm">
+                            <input type="hidden" placeholder="XRAY No" id="txt_xrayno" class="form-control  input-sm">
                         </div>
                     </div>
 
-                 
-
                     <div class="form-group">
-                        <label class="col-sm-2" for="invno">Serial No.</label>
+                        <label class="col-sm-2" for="invno" hidden="">Serial No.</label>
                         <div class="col-sm-2">
-                          <input type="text" placeholder="Serial No" id="txt_serino" class="form-control  input-sm">  
+                          <input type="hidden" placeholder="Serial No" id="txt_serino" class="form-control  input-sm">  
                         </div>
-                        <label class="col-sm-2" for="invno">Place Of Issued</label>
+                        <label class="col-sm-2" for="invno" hidden="">Place Of Issued</label>
                         <div class="col-sm-2">
-                             <input type="text" placeholder="Place Of Issued" id="txt_pla_of_iss" class="form-control  input-sm">
+                             <input type="hidden" placeholder="Place Of Issued" id="txt_pla_of_iss" class="form-control  input-sm">
                              
                         </div>
-                        <label class="col-sm-2" for="invno">G No.</label>
+                        <label class="col-sm-2" for="invno" hidden="">G No.</label>
                         <div class="col-sm-2">
-                            <input type="text" placeholder="G No" id="txt_gno" class="form-control  input-sm">
+                            <input type="hidden" placeholder="G No" id="txt_gno" class="form-control  input-sm">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        
+                    <div class="form-group">                      
                         <label class="col-sm-2" for="invno">Position Applied</label>
                         <div class="col-sm-2">
                             <input type="text" placeholder="Position Applied" id="txt_posapp" class="form-control  input-sm">
                         </div>
-                        <label class="col-sm-2" for="invno">GCC No.</label>
+                        <label class="col-sm-2" for="invno" hidden="">GCC No.</label>
                         <div class="col-sm-2">
-                            <input type="text" placeholder="GCC No" id="txt_gccno" class="form-control  input-sm">
-                        </div>
-                        
+                            <input type="hidden" placeholder="GCC No" id="txt_gccno" class="form-control  input-sm">
+                        </div>                       
                     </div>
-
-
 
                     <div class="form-group">
                         <label class="col-sm-2" for="invno">Date Issued</label>
@@ -325,9 +323,9 @@ function MM_swapImage() { //v3.0
                             <div class="col-sm-2">
                                 <?php
                                 echo"<select id = \"agname_txt\" class =\"form-control input-sm\">";
-                                $sql = "select * from agency";
+                                $sql = "select * from customer";
                                 foreach ($conn->query($sql) as $row) {
-                                    echo "<b><option value='" . $row["medicaltype"] . "'>" . $row["medicaltype"] . "</option></b>";
+                                    echo "<b><option value='" . $row["name"] . "'>" . $row["name"] . "</option></b>";
                                 }
                                 echo"</select>";
                                 ?>
@@ -357,7 +355,7 @@ function MM_swapImage() { //v3.0
                         </div>
                         <div class="col-sm-2">
                              <select id="txt_newref"  class="form-control"  onchange="setlab();">
-                                <option value="NM">New Medical</option>
+                                <option value="NM" selected>New Medical</option>
                                 <option value="RC">Recheck</option>
                                  <option value="MMR">MMR</option>
                             </select>
@@ -473,7 +471,7 @@ function MM_swapImage() { //v3.0
                         </div>
                         <label class="col-sm-2" for="invno">Cash</label>
                         <div class="col-sm-2">
-                            <input type="text" placeholder="Cash" id="txt_cash" class="form-control  input-sm">
+                            <input type="text" placeholder="Cash" id="txt_cash"  onkeyup ="setamount();"  class="form-control  input-sm" >
                         </div>
                         
                     </div>
@@ -495,6 +493,15 @@ function MM_swapImage() { //v3.0
                         
                     </div>
 
+                    <div class="form-group">
+                         <label class="col-sm-2" for="invno">Paid Amount</label>
+                        <div class="col-sm-2">
+                            <input type="text" placeholder="Paid Amount" id="txt_paid" class="form-control  input-sm">
+                        </div>
+
+                        
+                    </div>
+
                     <!-- Hidden Texts To fingerprint -->
                     <div class="form-group">
                         <div class="col-sm-2">
@@ -509,6 +516,21 @@ function MM_swapImage() { //v3.0
 
                         
                     </div>
+                     <div class="form-group">
+                        <div class="col-sm-2">
+                            <input type="hidden" placeholder="ImageDPI" id="ImageDPI" class="form-control  input-sm">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="hidden" placeholder="ImageQuality" id="ImageQuality" class="form-control  input-sm">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="hidden" placeholder="NFIQ" name="txt_rfdt" id="NFIQ" class="form-control  input-sm">
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="hidden" placeholder="TemplateBase64" name="TemplateBase64_txt" id="TemplateBase64_txt" class="form-control  input-sm">
+                        </div>
+                    </div>
+
                      <div class="form-group">
                         <div class="col-sm-2">
                             <input type="hidden" placeholder="ImageDPI" id="ImageDPI" class="form-control  input-sm">

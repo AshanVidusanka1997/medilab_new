@@ -18,12 +18,7 @@ include 'barcode128.php';
 $mid = $_GET["txt_ref"];
 
 
-
-    $sql1 = "SELECT * FROM mediprint where passport_no = '" . $mid . "'";
-    $result1 = $conn->query($sql1);
-    $row1 = $result1->fetch();
-
-    $sql2 = "SELECT * FROM sregdetails where patientno = '" . $row1["passport_no"] . "'";
+   $sql2 = "SELECT * FROM sregdetails where refno = '" . $mid . "'";
     $result2 = $conn->query($sql2);
     $row2 = $result2->fetch();
 
@@ -32,10 +27,19 @@ $mid = $_GET["txt_ref"];
     $result3 = $conn->query($sql3);
     $row3 = $result3->fetch();
 
+    // $pubdate= $row2["tdate"] ;
+    // $da = strtotime($pubdate);
+    // $dat = date('H:i:s', $da);
 
-    $pubdate= $row1["tdate"] ;
-    $da = strtotime($pubdate);
-    $dat = date('H:i:s', $da);
+    //$date=date_create( date("Y/m/d"));
+
+    date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+    $time= date('H:i:s');
+
+    date_default_timezone_set("Asia/Kolkata");   //India time (GMT+5:30)
+    $date=date('d-m-Y ');
+
+
 
     echo '<br>
         <div id="page-wrap"> 
@@ -43,17 +47,14 @@ $mid = $_GET["txt_ref"];
 <table style="width:100%;margin-top:45px;">
 
   <tr >
-    <td colspan="3"  align="left"><p style="height: 30%; ">'.bar128(stripcslashes($row1["passport_no"])).'</p></td>
+    <td colspan="3"  align="left"><p style="height: 30%; ">'.bar128(stripcslashes($row2["patientno"])).'</p></td>
 
   </tr>
   <tr>
      <td>&nbsp</td>
+    <td><b>'.$row2["labref"].'</b></td>
     <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td align="center">' . $row1["c_date"] . '</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
+    <td align="center"></td>
     <td>&nbsp</td>
     <td>&nbsp</td>
     <td>&nbsp</td>
@@ -64,21 +65,6 @@ $mid = $_GET["txt_ref"];
     <td>&nbsp</td>
     <td>&nbsp</td>
     <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-  </tr>
-  <tr>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td  align="center">' .$dat . '</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-  </tr>
-  <tr>
     <td>&nbsp</td>
     <td>&nbsp</td>
     <td>&nbsp</td>
@@ -88,7 +74,25 @@ $mid = $_GET["txt_ref"];
     <td>&nbsp</td>
   </tr>
   <tr>
-    <td>' . $row1["country"] . '</td>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+    <td align="center">'.$date . '</td>
+    <td>&nbsp </td>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+  </tr>
+  <tr>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+    <td align="center">' . $time . '</td>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+  </tr>
+  <tr>
+    <td>' . $row2["countryname"] . '</td>
     <td></td>
     <td></td>
     <td></td>
@@ -97,26 +101,26 @@ $mid = $_GET["txt_ref"];
     <td>&nbsp</td>
   </tr>
   <tr>
-    <td>' . $row1["name"] . '</td>
+    <td>' . $row2["fname"] ." ". $row2["lastname"] . '</td>
     <td></td>
     <td></td>
-    <td></td>
-    <td></td>
-    <td>&nbsp</td>
-    <td>&nbsp</td>
-  </tr>
-  <tr>
-    <td>' . $row1["sex"] . '</td>
-    <td>' . $row1["status"] . '</td>
-    <td></td>
-    <td>' . $row1["nationality"] . '</td>
+    <td  >'.$row2["age_years"].' years</td>
     <td></td>
     <td>&nbsp</td>
     <td>&nbsp</td>
   </tr>
   <tr>
-    <td>' . $row1["passport_no"] . '</td>
-    <td>' . $row1["date_of_issue"] . '</td>
+    <td>' . $row2["sex"] . '</td>
+    <td><p style="margin-left: -90px;">' . $row2["medistatus"] . '</p></td>
+    <td></td>
+    <td>' . $row2["nation"] . '</td>
+    <td></td>
+    <td>&nbsp</td>
+    <td>&nbsp</td>
+  </tr>
+  <tr>
+    <td>' . $row2["patientno"] . '</td>
+    <td><p style="margin-left: -60px;">' . $row2["dtisu"] . '</p></td>
     <td>&nbsp</td>
     <td></td>
     <td></td>
@@ -125,7 +129,7 @@ $mid = $_GET["txt_ref"];
   </tr>
    <tr>
     <td>' . $row2["POS_APP"] . '</td>
-    <td  align="center">' . $row1["agency"] . '</td>
+    <td  align="center">' . $row2["agname"] . '</td>
     <td>&nbsp</td>
     <td>&nbsp</td>
     <td>&nbsp</td>

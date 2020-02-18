@@ -23,7 +23,7 @@
                     <a onclick="save_inv();" class="btn btn-success btn-sm">
                         <span class="fa fa-save"></span> &nbsp; Save
                     </a>
-                    <a onclick="NewWindow('search_cashier.php?stname=code', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-info btn-sm">
+                    <a onclick="NewWindow('search_medical.php?stname=code', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-info btn-sm">
                         <span class="glyphicon glyphicon-search"></span> &nbsp; FIND
                     </a>
                    

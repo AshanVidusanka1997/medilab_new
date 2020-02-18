@@ -29,6 +29,17 @@ if ($_GET["Command"] == "pass_quot") {
          $ResponseXML .= "<id><![CDATA[" . json_encode($row) . "]]></id>";
         
     }
+
+      $sqlsjobs = "select * from  mediprint_main where refno = '" . $cuscode . "'";
+           
+                foreach ($conn->query($sqlsjobs) as $rowsjob) {
+
+                   $ResponseXML .= "<subrow><![CDATA[" . json_encode($rowsjob) . "]]></subrow>";
+                   
+               }
+
+
+
 $ResponseXML .= "<stname><![CDATA[" . $_GET['stname'] . "]]></stname>";
 
     $ResponseXML .= "</salesdetails>";
@@ -37,9 +48,6 @@ $ResponseXML .= "<stname><![CDATA[" . $_GET['stname'] . "]]></stname>";
 
 
 if ($_GET["Command"] == "search_custom") {
-
-    //echo $_GET["Command"];
-
 
     $ResponseXML = "";
 
@@ -50,16 +58,12 @@ if ($_GET["Command"] == "search_custom") {
                 <tr>
                       <th>Ref No.</th>
                       <th>Date</th>
-                      <th>Patientewfwaf No.</th>
-
-                  
+                      <th>Patientewfwaf No.</th>            
                 </tr>";
 
-    $sql = "Select * from sregdetails where refno <> ''";
+    $sql = "Select * from sregdetails where refno <> '' and  cancel='0' ";
 
-
-
-
+ 
     if ($_GET['cusno'] != "") {
         $sql .= " and refno like '%" . $_GET['cusno'] . "%'";
     }
@@ -71,9 +75,7 @@ if ($_GET["Command"] == "search_custom") {
     }
 
 
-    $sql .= " ORDER BY refno limit 50 ";
-
-
+    $sql .= "  ORDER BY refno limit 50 ";
 
 
     foreach ($conn->query($sql) as $row) {

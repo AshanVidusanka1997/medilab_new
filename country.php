@@ -23,13 +23,17 @@
                     <a onclick="save_inv();" class="btn btn-success btn-sm">
                         <span class="fa fa-save"></span> &nbsp; Save
                     </a>
-                    <a onclick="NewWindow('search_country_dtls.php?stname=code', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-info btn-sm">
+                    <a onclick="NewWindow('search_country_main.php?stname=code', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-info btn-sm">
                         <span class="glyphicon glyphicon-search"></span> &nbsp; FIND
                     </a>
                    
 
                     <a onclick="sess_chk('labform', 'crn');" class="btn btn-default btn-sm">
                         <span class="fa fa-folder"></span> &nbsp; Print
+                    </a>
+
+                     <a onclick="update1();" class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-download"></span> &nbsp; Update
                     </a>
 
                      <a onclick="cancel();" class="btn btn-danger btn-sm">
@@ -69,7 +73,7 @@
                          <div class="form-group-sm">
                             <label class="col-sm-1" for="invno">Amount</label>
                             <div class="col-sm-2">
-                                <input type="text" placeholder="Address" id="amt_txt" class="form-control  input-sm">
+                                <input type="text" placeholder="Amount" id="amt_txt" class="form-control  input-sm">
                             </div>
                         </div>
 
@@ -87,7 +91,7 @@
 
                              <label class="col-sm-1" for="invno">Reference</label>
                             <div class="col-sm-2">
-                                <input type="text" placeholder="Address" id="refno_txt" class="form-control  input-sm">
+                                <input type="text" placeholder="Reference" id="refno_txt" class="form-control  input-sm">
                             </div>
                         </div>
                             

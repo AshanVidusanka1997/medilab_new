@@ -76,7 +76,7 @@ require_once './connection_sql.php';
                           
                              <input type="text" placeholder="" id="txt_passno" class="form-control  input-sm">
                         </div>
-                        <label class="col-sm-1" for="invno">Date</label>
+                        <label class="col-sm-1" for="invno">DOB</label>
                         <div class="col-sm-2">
                             
                              <input type="date" placeholder="" id="dtbdate" class="form-control  input-sm">

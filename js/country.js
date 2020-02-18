@@ -129,6 +129,52 @@ function salessaveresult() {
     }
 }
 
+function update1() {
+
+   xmlHttp = GetXmlHttpObject();
+   if (xmlHttp == null) {
+       alert("Browser does not support HTTP Request");
+       return;
+   }
+   if (document.getElementById('ccode_txt').value == "") {
+       document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Customer Code Entered</span></div>";
+       return false;
+   }
+
+    var url = "country_data.php";
+    url = url + "?Command=" + "update";
+
+    url = url + "&ccode_txt=" + document.getElementById('ccode_txt').value;
+    url = url + "&cname_txt=" + document.getElementById('cname_txt').value;
+    url = url + "&chead_txt=" + document.getElementById('chead_txt').value;
+    url = url + "&amt_txt=" + document.getElementById('amt_txt').value;
+    url = url + "&short_txt=" + document.getElementById('short_txt').value;
+    url = url + "&refno_txt=" + document.getElementById('refno_txt').value
+
+
+    xmlHttp.onreadystatechange = salessaveresult;
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+}
+
+function update() {
+   var XMLAddress1;
+
+   if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
+
+       if (xmlHttp.responseText == "update") {
+           document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Updated</span></div>";
+             $("#msg_box").hide().slideDown(400).delay(2000);
+            $("#msg_box").slideUp(400);
+
+       } else {
+           document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
+             $("#msg_box").hide().slideDown(400).delay(2000);
+            $("#msg_box").slideUp(400);
+       }
+   }
+}
+
 
 
 

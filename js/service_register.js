@@ -229,6 +229,12 @@ function setlab() {
     document.getElementById('txt_labref').value = pref + "/" + obj[1];    
 }
 
+function setamount() {
+
+    var pref = document.getElementById('txt_cash').value;
+    document.getElementById('txt_paid').value = pref;    
+}
+
 
 
 function save_inv() {
@@ -259,10 +265,7 @@ xmlHttp = GetXmlHttpObject();
         document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Gender Is Not Enterd</span></div>";
         return false;
     }
-    if (document.getElementById('txt_nation').value == "") {
-        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Nationality Is Not Enterd</span></div>";
-        return false;
-    }
+  
 
     if (document.getElementById('cou_name_txt').value == "") {
         document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Country Name Is Not Enterd</span></div>";
@@ -355,6 +358,7 @@ xmlHttp = GetXmlHttpObject();
     url = url + "&txt_cash=" + document.getElementById('txt_cash').value;
     url = url + "&txt_bank=" + document.getElementById('txt_bank').value;
     url = url + "&txt_rfamt=" + document.getElementById('txt_rfamt').value;
+    url = url + "&txt_paid=" + document.getElementById('txt_paid').value;
     url = url + "&txt_rfdt=" + document.getElementById('txt_rfdt' ).value;
     url = url + "&agname_txt=" + document.getElementById('agname_txt' ).value;
     url = url + "&gflag=" + document.getElementById('gflag' ).value;
@@ -434,6 +438,54 @@ function deleteRow(r) {
        // qtyTot();
 }
 
+
+function cancel() {
+    xmlHttp = GetXmlHttpObject();
+    if (xmlHttp == null) {
+        alert("Browser does not support HTTP Request");
+        return;
+    }
+     if (document.getElementById('txt_srdate').value == "") {
+        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Date Is Not Enterd</span></div>";
+        return false;
+    }
+    if (document.getElementById('txt_patno').value == "") {
+        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Pation No Is Not Enterd</span></div>";
+        return false;
+    }
+    if (document.getElementById('txt_fname').value == "") {
+        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>First Name Is Not Enterd</span></div>";
+        return false;
+    }
+
+    var url = "service_register_data.php";
+    url = url + "?Command=" + "cancel";
+
+
+    url = url + "&refno_txt=" + document.getElementById('txt_refno').value;
+    document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Item Code Not Enterd</span></div>";
+
+    xmlHttp.onreadystatechange = cancelcashier;
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+}
+
+function cancelcashier() {
+    var XMLAddress1;
+
+    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
+
+        if (xmlHttp.responseText == "cancel") {
+            document.getElementById('msg_box').innerHTML = "<div class='alert alert-success' role='alert'><span class='center-block'>Cancelled Successfully</span></div>";
+            $("#msg_box").hide().slideDown(400).delay(2000);
+            $("#msg_box").slideUp(400);
+
+        } else {
+            document.getElementById('msg_box').innerHTML = "<div class='alert alert-danger' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
+        }
+    }
+}
+
 function update()
 {
 
@@ -511,6 +563,7 @@ function update()
     url = url + "&txt_bank=" + document.getElementById('txt_bank').value;
     url = url + "&txt_rfamt=" + document.getElementById('txt_rfamt').value;
     url = url + "&txt_rfdt=" + document.getElementById('txt_rfdt' ).value;
+    url = url + "&txt_paid=" + document.getElementById('txt_paid').value;
     url = url + "&agname_txt=" + document.getElementById('agname_txt' ).value;
     url = url + "&gflag=" + document.getElementById('gflag' ).value;
     url = url + "&uniq=" + document.getElementById('tmpno').value;
@@ -547,7 +600,7 @@ function salessaveresultup() {
 function print1() {
 
     var url = "medical_report_labform.php";
-    url = url + "?txt_ref=" + document.getElementById('txt_patno').value;
+    url = url + "?txt_ref=" + document.getElementById('txt_refno').value;
 
 
     window.open(url, '_blank');
@@ -560,7 +613,8 @@ function print2() {
 
 
     var url = "medical_report_rform1.php";
-    url = url + "?txt_ref=" + document.getElementById('txt_patno').value;
+    url = url + "?txt_ref=" + document.getElementById('txt_refno').value;
+
 
 
     window.open(url, '_blank');
@@ -572,7 +626,7 @@ function print2() {
 function print3() {
 
     var url = "medical_report_rform2.php";
-    url = url + "?txt_ref=" + document.getElementById('txt_patno').value;
+    url = url + "?txt_ref=" + document.getElementById('txt_refno').value;
 
 
     window.open(url, '_blank');
@@ -584,7 +638,7 @@ function print3() {
 function print4() {
 
     var url = "medical_report_print4.php";
-    url = url + "?txt_ref=" + document.getElementById('txt_patno').value;
+    url = url + "?txt_ref=" + document.getElementById('txt_refno').value;
 
 
     window.open(url, '_blank');
@@ -594,6 +648,17 @@ function print4() {
 }
 
 
+function printcash() {
+
+    var url = "cashier_print1.php";
+    url = url + "?txt_ref=" + document.getElementById('txt_refno').value;
+
+
+    window.open(url, '_blank');
+
+
+
+}
 
 
 

@@ -35,7 +35,7 @@
                         <span class="glyphicon glyphicon-remove"></span> &nbsp; CANCEL
                     </a>
 
-                    <a onclick="NewWindow('search_medical_print.php?stname=miq', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-primary btn-sm">
+                    <a onclick="NewWindow('search_service_register.php?stname=miqs', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-search"></span> &nbsp; FIND
                     </a>
 
@@ -114,14 +114,7 @@
                         </div>
                          <label class="col-sm-1" for="c_code">Medical Name</label>
                         <div class="col-sm-2">
-                            <?php
-                            echo"<select id = \"name_txt\" class =\"form-control input-sm\">";
-                            $sql = "select * from rege";
-                            foreach ($conn->query($sql) as $row) {
-                                echo "<b><option value='" . $row["medName"] . "'>" . $row["medName"] . "</option></b>";
-                            }
-                            echo"</select>";
-                            ?>
+                        <input type="text" placeholder=""  id="name_txt" class="form-control  input-sm">
                         </div>
                     </div>
 
@@ -134,30 +127,17 @@
                     <div class="form-group-sm">
                         <label class="col-sm-1" for='c_code'>Sex</label>
                         <div class='col-sm-2'>
-                            <select id="sex_txt" class="form-control  input-sm">
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                            </select>
+                        <input type="text" placeholder=""  id="sex_txt" class="form-control  input-sm">
                         </div>
 
                         <label class="col-sm-1" for='c_code'>Status</label>
 
                         <div class="col-sm-2">
-                           <select id="status_txt" class="form-control  input-sm">
-                                <option value="Married">Married</option>
-                                <option value="UnMarried">UnMarried</option>
-                            </select>
+                        <input type="text" placeholder=""  id="status_txt" class="form-control  input-sm">
                         </div>
                         <label class="col-sm-1" for="invno">Agency</label>
-                        <div class="col-sm-2">
-                            <?php
-                            echo"<select id = \"agency_txt\" class =\"form-control input-sm\">";
-                            $sql = "select * from agency";
-                            foreach ($conn->query($sql) as $row) {
-                                echo "<b><option value='" . $row["medicaltype"] . "'>" . $row["medicaltype"] . "</option></b>";
-                            }
-                            echo"</select>";
-                            ?>
+                        <div class="col-sm-3">
+                        <input type="text" placeholder=""  id="agency_txt" class="form-control  input-sm">
                         </div>
                     </div>
 
