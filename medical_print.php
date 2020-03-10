@@ -24,6 +24,10 @@ require_once './connection_sql.php';
                     <a onclick="NewWindow('search_medical_print.php?stname=code', 'mywin', '800', '700', 'yes', 'center');" class="btn btn-info btn-sm">
                         <span class="glyphicon glyphicon-search"></span> &nbsp; FIND
                     </a>
+
+                     <a onclick="update();" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-download"></span> &nbsp; Update
+                    </a>
                    
 
                     <a onclick="print();" class="btn btn-warning btn-sm">

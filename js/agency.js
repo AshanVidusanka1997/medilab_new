@@ -138,50 +138,48 @@ function salessaveresult() {
     }
 }
 
-//
-//function edit() {
-//
-//    xmlHttp = GetXmlHttpObject();
-//    if (xmlHttp == null) {
-//        alert("Browser does not support HTTP Request");
-//        return;
-//    }
-//    if (document.getElementById('reference_no').value == "") {
-//        document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Reference NO  Not Entered</span></div>";
-//        return false;
-//    }
-//
-//    var url = "po_requistion_note_data.php";
-//    url = url + "?Command=" + "update";
-//
-//    url = url + "&reference_no=" + document.getElementById('reference_no').value;
-//    url = url + "&date=" + document.getElementById('date').value;
-//    url = url + "&manual_no=" + document.getElementById('manual_no').value;
-//    url = url + "&job_no=" + document.getElementById('job_no').value;
-//    url = url + "&remarks=" + document.getElementById('remarks').value;
-//    url = url + "&dummy=" + document.getElementById('dummy').value;
-//
-//
-//
-//
-//    xmlHttp.onreadystatechange = update;
-//    xmlHttp.open("GET", url, true);
-//    xmlHttp.send(null);
-//}
-//
-//function update() {
-//    var XMLAddress1;
-//
-//    if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
-//
-//        if (xmlHttp.responseText == "update") {
-//            document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Updated</span></div>";
-//
-//        } else {
-//            document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
-//        }
-//    }
-//}
+function update1() {
+
+   xmlHttp = GetXmlHttpObject();
+   if (xmlHttp == null) {
+       alert("Browser does not support HTTP Request");
+       return;
+   }
+   if (document.getElementById('agn_txt').value == "") {
+       document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Customer Code Entered</span></div>";
+       return false;
+   }
+
+    var url = "agency_data.php";
+    url = url + "?Command=" + "update";
+
+   url = url + "&agn_txt=" + document.getElementById('agn_txt').value;
+   url = url + "&mtype_txt=" + document.getElementById('mtype_txt').value;
+   url = url + "&amt_txt=" + document.getElementById('amt_txt').value;
+
+
+    xmlHttp.onreadystatechange = salessaveresult;
+    xmlHttp.open("GET", url, true);
+    xmlHttp.send(null);
+}
+
+function update() {
+   var XMLAddress1;
+
+   if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete") {
+
+       if (xmlHttp.responseText == "update") {
+           document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>Updated</span></div>";
+             $("#msg_box").hide().slideDown(400).delay(2000);
+            $("#msg_box").slideUp(400);
+
+       } else {
+           document.getElementById('msg_box').innerHTML = "<div class='alert alert-warning' role='alert'><span class='center-block'>" + xmlHttp.responseText + "</span></div>";
+             $("#msg_box").hide().slideDown(400).delay(2000);
+            $("#msg_box").slideUp(400);
+       }
+   }
+}
 //
 //
 //function delete1() {

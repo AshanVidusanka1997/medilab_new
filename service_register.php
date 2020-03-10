@@ -316,7 +316,7 @@ function MM_swapImage() { //v3.0
                         
                         <label class="col-sm-2" for="invno">Lab No</label>
                         <div class="col-sm-2">
-                            <input type="text" placeholder="Lab Ref" id="txt_labref" class="form-control  input-sm">
+                            <input type="text" placeholder="Lab Ref" id="txt_labref" class="form-control  input-sm" >
                         </div>
                         
                         <label class="col-sm-2" for="c_code">Agency</label>
@@ -455,7 +455,13 @@ function MM_swapImage() { //v3.0
                         <div class="col-sm-2">
                             <input type="text" placeholder="Cheque No" id="txt_cheqno" class="form-control  input-sm">
                         </div>
+
+                        <label class="col-sm-2" for="invno">Amount</label>
+                        <div class="col-sm-2">
+                            <input type="text" placeholder="Amount" id="medi_amounttot" class="form-control  input-sm">
+                        </div>
                     </div>
+
                     
 
                   

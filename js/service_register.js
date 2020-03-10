@@ -193,6 +193,7 @@ function getlab() {
     url = url + "?Command=" + "getlab"; 
 
 
+    url = url + "&txt_newref=" + document.getElementById('txt_newref').value;
 
     xmlHttp.onreadystatechange = assign_lab;
     xmlHttp.open("GET", url, true);
@@ -209,7 +210,7 @@ function assign_lab() {
     {
         
         XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("id1");
-        document.getElementById('txt_labref').value = "NM/" + XMLAddress1[0].childNodes[0].nodeValue;
+        document.getElementById('txt_labref').value =  XMLAddress1[0].childNodes[0].nodeValue;
 
         
             
@@ -219,14 +220,17 @@ function assign_lab() {
 
 
 function setlab() {
+     getlab();  
 
-    var pref = document.getElementById('txt_newref').value;
+    // var pref = document.getElementById('txt_newref').value;
 
-    var text = document.getElementById('txt_labref').value;
+    // var text = document.getElementById('txt_labref').value;
     
-    var obj = text.split("/");
+    // var obj = text.split("/");
 
-    document.getElementById('txt_labref').value = pref + "/" + obj[1];    
+    // document.getElementById('txt_labref').value = pref + "/" + obj[1];  
+
+   
 }
 
 function setamount() {
@@ -294,7 +298,7 @@ xmlHttp = GetXmlHttpObject();
         } else {
             t = 1;
         }
-        data.append('id', document.getElementById('tmpno').value);
+        data.append('id', document.getElementById('txt_patno').value);
         data.append('file', alpha);
     }
 
@@ -350,11 +354,11 @@ xmlHttp = GetXmlHttpObject();
     url = url + "&txt_rem=" + document.getElementById('txt_rem' ).value;
     url = url + "&txt_labref=" + document.getElementById('txt_labref').value;
     url = url + "&txt_newref=" + document.getElementById('txt_newref' ).value;
-    url = url + "&txt_fn1=" + document.getElementById('txt_fn1' ).value;
-    url = url + "&txt_fn2=" + document.getElementById('txt_fn2' ).value;
+    url = url + "&txt_fn1=" + document.getElementById('txt_fn1').value;
+    url = url + "&txt_fn2=" + document.getElementById('txt_fn2').value;
     url = url + "&txt_cheqno=" + document.getElementById('txt_cheqno').value;
-    url = url + "&txt_cheqamt=" + document.getElementById('txt_cheqamt' ).value;
-    url = url + "&txt_cheqdt=" + document.getElementById('txt_cheqdt' ).value;
+    url = url + "&txt_cheqamt=" + document.getElementById('txt_cheqamt').value;
+    url = url + "&txt_cheqdt=" + document.getElementById('txt_cheqdt').value;
     url = url + "&txt_cash=" + document.getElementById('txt_cash').value;
     url = url + "&txt_bank=" + document.getElementById('txt_bank').value;
     url = url + "&txt_rfamt=" + document.getElementById('txt_rfamt').value;
@@ -363,6 +367,7 @@ xmlHttp = GetXmlHttpObject();
     url = url + "&agname_txt=" + document.getElementById('agname_txt' ).value;
     url = url + "&gflag=" + document.getElementById('gflag' ).value;
     url = url + "&uniq=" + document.getElementById('tmpno').value;
+    url = url + "&medi_amounttot=" + document.getElementById('medi_amounttot').value;
 
 
     // Fingerprint Text Clear
@@ -419,15 +424,16 @@ function addRow() {
   cell2.setAttribute("id", "name"+k);
    
   cell3.setAttribute("contenteditable", "true");
+  cell3.setAttribute("onkeyup", "qtyTot();");
+ 
     // cell7.setAttribute("contenteditable", "true");
   cell1.innerHTML = "";
   cell2.innerHTML = "";
   cell3.innerHTML = "<a href=\"\" onclick=\"NewWindow('medicals_view.php?stname=ser_r&k="+k+"', 'mywin', '800', '700', 'yes', 'center');                                                                    return false\" onfocus=\"this.blur()\">                                                                <input type=\"button\" name=\"searchcusti\" id=\"searchcusti\" value=\"...\" class=\"btn btn-default btn-sm\">                                                            </a>";
   cell4.innerHTML = '<input type="button" value="-" onclick="deleteRow(this)">';
 
- 
 
-   //qtyTot();
+   qtyTot();
 }
 
 function deleteRow(r) {
@@ -435,7 +441,7 @@ function deleteRow(r) {
   var i = r.parentNode.parentNode.rowIndex;
   document.getElementById("myTable").deleteRow(i);
 
-       // qtyTot();
+        qtyTot();
 }
 
 
@@ -568,6 +574,8 @@ function update()
     url = url + "&gflag=" + document.getElementById('gflag' ).value;
     url = url + "&uniq=" + document.getElementById('tmpno').value;
 
+    url = url + "&medi_amounttot=" + document.getElementById('medi_amounttot').value;
+
      url = url + "&SerialNumber=" + document.getElementById('SerialNumber').value;
     url = url + "&ImageHeight=" + document.getElementById('ImageHeight').value;
     url = url + "&ImageWidth=" + document.getElementById('ImageWidth').value;
@@ -660,6 +668,29 @@ function printcash() {
 
 }
 
+
+function qtyTot() {
+
+    var table = $('#myTable').tableToJSON();
+    console.log(table);
+    var  qtyTot = 0.00;
+    var tempqty = 0.00;
+    for (var i = table.length - 1; i >= 0; i--) {
+          
+          tempqty = parseFloat(table[i].Amount) || 0;
+        qtyTot = tempqty + qtyTot;
+    }
+
+        document.getElementById("medi_amounttot").value = qtyTot;
+
+}
+
+
+
+
+
+
+setInterval(function(){ qtyTot(); }, 2000);
 
 
 

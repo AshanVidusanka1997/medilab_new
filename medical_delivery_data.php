@@ -19,10 +19,6 @@ if ($_GET["Command"] == "getdt") {
     $row = $result->fetch();
     $no = $row['mdcode'];
 
-    //echo print_r($row);
-//    uniq
-    //$uniq = uniqid();
-
     $tmpinvno = "000000" . $no;
     $lenth = strlen($tmpinvno);
     $no = trim("MD/") . substr($tmpinvno, $lenth - 7);
@@ -45,19 +41,29 @@ if ($_GET["Command"] == "save_item") {
     try {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
+
+
+         $sql = "SELECT mdcode FROM invpara";
+         $result = $conn->query($sql);
+         $row = $result->fetch();
+         $no = $row['mdcode'];     
+
+         $tmpinvno = "000000" . $no;
+         $lenth = strlen($tmpinvno);
+         $no = trim("MD/") . substr($tmpinvno, $lenth - 7);
         
-        $sql1 = "select * from med_dele where refno = '" . $_GET['refno'] . "'";
-        $result1 = $conn->query($sql1);
-        //echo $sql;
-        if ($row1 = $result1->fetch()) {
-            exit("Duplicate ....!!!");
-        }
+        // $sql1 = "select * from med_dele where refno = '" . $_GET['refno'] . "'";
+        // $result1 = $conn->query($sql1);
+        // //echo $sql;
+        // if ($row1 = $result1->fetch()) {
+        //     exit("Duplicate ....!!!");
+        // }
         
          
 
         //$ResponseXML .= "<id><![CDATA[" . json_encode($row) . "]]></id>";
          $sql1 = "Insert into med_dele(refno,serino,mdate,passportno,dele,mtime,name_1,name_2,ourref,remarks,med_amount,paid_amount,balpay)values 
-                      ('" . $_GET['refno'] . "','" . $_GET['serino_txt'] . "','" . $_GET['mdate_txt'] . "','" . $_GET['pno_txt'] . "','" . $_GET['dele_txt'] . "','" . $_GET['time_txt'] . "','" . $_GET['name1_txt'] . "','" . $_GET['name2_txt'] . "','" . $_GET['ourref_txt'] . "','" . $_GET['remarks_txt'] . "','" . $_GET['medamt_txt'] . "','" . $_GET['paidamt_txt'] . "','" . $_GET['balpay_txt'] . "')";
+                      ('" .$no . "','" . $_GET['serino_txt'] . "','" . $_GET['mdate_txt'] . "','" . $_GET['pno_txt'] . "','" . $_GET['dele_txt'] . "','" . $_GET['time_txt'] . "','" . $_GET['name1_txt'] . "','" . $_GET['name2_txt'] . "','" . $_GET['ourref_txt'] . "','" . $_GET['remarks_txt'] . "','" . $_GET['medamt_txt'] . "','" . $_GET['paidamt_txt'] . "','" . $_GET['balpay_txt'] . "')";
 
         $result = $conn->query($sql1);
         $sql = "SELECT mdcode FROM invpara";

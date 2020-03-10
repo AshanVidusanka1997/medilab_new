@@ -43,6 +43,7 @@ include_once './connection_sql.php';
                 <tr>
                     <th>Ref No.</th>
                     <th>Date</th>
+                    <th>Lab No</th>
                     <th>Passport No</th>
                   
                 </tr>
@@ -62,6 +63,7 @@ include_once './connection_sql.php';
                     echo "<tr>    
                               <td onclick=\"custno('$cuscode', '$stname');\">" . $row['refno'] . "</a></td>
                               <td onclick=\"custno('$cuscode', '$stname');\">" . $row['srdate'] . "</a></td>
+                               <td onclick=\"custno('$cuscode', '$stname');\">" . $row['labref'] . "</a></td>
                               <td onclick=\"custno('$cuscode', '$stname');\">" . $row['patientno'] . "</a></td>
                              
 

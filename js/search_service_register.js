@@ -131,6 +131,7 @@ function passcusresult_quot()
          opener.document.getElementById('txt_rfdt' ).value= vobj.dt_refund;
          opener.document.getElementById('agname_txt' ).value= vobj.agname;
          opener.document.getElementById('txt_paid' ).value= vobj.paid_amt;
+         opener.document.getElementById('medi_amounttot' ).value= vobj.meditot;
 
 
 
@@ -144,6 +145,54 @@ function passcusresult_quot()
 
          opener.document.getElementById('tmpno').value= vobj.uniq;
           opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + vobj.img + "\" alt=\"\">";
+
+
+
+           var rowCount = window.opener.document.getElementById('myTable').rows.length;
+
+                var i;
+
+                for (i = 0; i < rowCount-1; i++) { 
+                    window.opener.document.getElementById("myTable").deleteRow(1);
+                }
+                // table.parentNode.removeChild(table);
+
+ XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("subrow");
+                var i;
+                for (i = 0; i < XMLAddress1.length; i++) { 
+
+                      var obj = JSON.parse(XMLAddress1[i].childNodes[0].nodeValue);
+              
+                                  var table = window.opener.document.getElementById('myTable');
+
+                // table.parentNode.removeChild(table);
+                                  var row = table.insertRow(table.length);
+                                  var cell1 = row.insertCell(0);
+                                  var cell2 = row.insertCell(1);
+                                  var cell3 = row.insertCell(2);
+                                  var cell4 = row.insertCell(3);
+                                 
+                                 
+                                 
+
+
+
+                                  cell1.innerHTML = obj.mediDescript;
+                                  cell2.innerHTML = obj.amount;
+                                  cell3.innerHTML = "";
+                                  cell4.innerHTML = '<input type="button" value="-" onclick="deleteRow(this)">';
+
+                  
+                }
+
+
+
+
+
+
+
+
+
 
 
 

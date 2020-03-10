@@ -29,22 +29,22 @@ $jmain = json_decode($_POST['MAIN']);
                       ('" . $jmain->txt_refno . "','" . $jmain->txt_srdate. "','" . $jmain->txt_patno . "','" . $jmain->txt_fname . "','" . $jmain->txt_lname . "','" . $jmain->txt_ageyrs . "','" . $jmain->txt_agemnths . "','" . $jmain->txt_dob . "','" . $jmain->txt_gender . "','" . $jmain->txt_nation . "','" . $jmain->txt_count . "','" . $jmain->txt_countname . "','" . $jmain->txt_nochld . "','" . $jmain->txt_lchldage . "','" . $jmain->txt_medicode . "','" . $jmain->txt_mediname . "','" . $jmain->txt_medistatus . "','" . $jmain->txt_type . "','" . $jmain->txt_dest . "','" . $jmain->txt_xrayno . "','" . $jmain->txt_serino . "','" . $jmain->txt_pla_of_iss . "','" . $jmain->txt_gno . "','" . $jmain->txt_posapp . "','" . $jmain->txt_gccno . "','" . $jmain->txt_cusadd . "','" . $jmain->txt_dtofissu . "','" . $jmain->txt_time . "','" . $jmain->txt_rem . "','" . $jmain->txt_labref . "','" . $jmain->txt_newref . "','" . $jmain->txt_fn1 . "','" . $jmain->txt_fn2 . "','" . $jmain->txt_cheqno . "','" . $jmain->txt_cheqamt . "','" . $jmain->txt_cheqdt . "','" . $jmain->txt_cash . "','" . $jmain->txt_bank . "','" . $jmain->txt_rfamt . "','" . $jmain->txt_rfdt . "')";
 
 
-        $result = $conn->query($sql1);
+                        $result = $conn->query($sql1);                
 
-        $sql = "SELECT regicode FROM invpara";
-        $result = $conn->query($sql);
-        $row = $result->fetch();
-        $no = $row['regicode'];
-        $no2 = $no + 1;
-        $sql = "update invpara set regicode = $no2 where regicode = $no";
-        $result = $conn->query($sql);
+                        $sql = "SELECT regicode FROM invpara";
+                        $result = $conn->query($sql);
+                        $row = $result->fetch();
+                        $no = $row['regicode'];
+                        $no2 = $no + 1;
+                        $sql = "update invpara set regicode = $no2 where regicode = $no";
+                        $result = $conn->query($sql);                
 
-        $conn->commit();
-        echo "Saved";
-    } catch (Exception $e) {
-        $conn->rollBack();
-        echo $e;
-    }
+                        $conn->commit();
+                        echo "Saved";
+                    } catch (Exception $e) {
+                        $conn->rollBack();
+                        echo $e;
+                    }
 }
 
 
@@ -53,15 +53,6 @@ $jmain2 = json_decode($_POST['MAIN2']);
     try {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
-        
-        
-
-  // $sql1 = "Insert into mediprin(REFNO,PA_NO,dob,agname,cou_name,g_no,PDATE,MNAME,height,weight,SEX,POS_APP,MStatus,dtisu,darem1,darem2,darem3,rem1np,rem2np,xarem1,xaremnp,larem1,larnp1,labrem,VREY,VLEY,REY,LEY,REA,LEA,BP,HEART,LUNGS,Abdomen,Hernia,Varicosities,Extremities,Skin,Hemoglobin,Malaria,Creatinine,Urea,L_F_T,Blood,XRAYNO,XRAY1,XRAY2,XRAY3,V_Cholear,Helminths,Bilharzasis2,Salmonella_Shiella,SUGAR,Albumin,Bilharzasis1,Pregnancy,hivt,hbsag,antihcv)values 
-  //                     ('" . $jmain2->txt_ref . "','" . $jmain2->txt_passno . "','" . $jmain2->dtbdate . "','" . $jmain2->txt_agname . "','" . $jmain2->txt_gccno . "','" . $jmain2->cmbhead . "','" . $jmain2->txt_gccno . "','" . $jmain2->txt_agname . "','" . $jmain2->dtisu . "','" . $jmain2->dtcdate . "','" . $jmain2->txtdarem1 . "','" . $jmain2->txtdarem2 . "','" . $jmain2->txtdarem3 . "','" . $jmain2->txtrem1np . "','" . $jmain2->txtrem2np . "','" . $jmain2->txtxarem1 . "','" . $jmain2->txtaremnp . "','" . $jmain2->txtlarem1 . "','" . $jmain2->txtlarnp1 . "','" . $jmain2->txtlabrem . "','" . $jmain2->txtEYE_NE_R . "','" . $jmain2->txtEYE_NE_L . "','" . $jmain2->txtEYE__R . "','" . $jmain2->txtEYE__L . "','" . $jmain2->txtYEAR_R . "','" . $jmain2->txtYEAR_L . "','" . $jmain2->txtbp . "','" . $jmain2->txtheart . "','" . $jmain2->txtlungs . "','" . $jmain2->txtadb . "','" . $jmain2->txther . "','" . $jmain2->txtvaric . "','" . $jmain2->txtextrem . "','" . $jmain2->txtskin . "','" . $jmain2->txtHEM . "','" . $jmain2->cmbmal . "','" . $jmain2->txtcreat . "','" . $jmain2->txturea . "','" . $jmain2->txtlft . "','" . $jmain2->cmbbg . "','" . $jmain2->txtEYE_NE_R . "','" . $jmain2->txtEYE_NE_R . "','" . $jmain2->txtEYE_NE_R . "','" . $jmain2->txtEYE_NE_R. "','" . $jmain2->txtvchol . "','" . $jmain2->txthelmin . "','" . $jmain2->txtbilhar2 . "','" . $jmain2->txtsalshei . "','" . $jmain2->txtsug . "','" . $jmain2->txtalbu . "','" . $jmain2->txtbilhar1 . "','" . $jmain2->txtpreg . "','" . $jmain2->cmbhiv . "','" . $jmain2->cmbhbs . "','" . $jmain2->antihcv . "','" . $jmain2->antihcv . "','" . $jmain2->antihcv . "','" . $jmain2->antihcv . "','" . $jmain2->antihcv . "')";
-
-
-
-
 
 $sql1 = "Insert into mediprint(ref_no,passport_no,c_date,agency,country,gcc_no,medical_date,name,height,weight,
 sex,age,nationality,date_of_issue,patients_ref_no,position_applied,status,serial_no,xray_no,remark1,remark2,

@@ -58,6 +58,7 @@ if ($_GET["Command"] == "search_custom") {
                 <tr>
                       <th>Ref No.</th>
                       <th>Date</th>
+                      <th>Lab No</th>
                       <th>Patientewfwaf No.</th>            
                 </tr>";
 
@@ -87,6 +88,7 @@ if ($_GET["Command"] == "search_custom") {
         $ResponseXML .= "<tr>    
                               <td onclick=\"custno('$cuscode', '$stname');\">" . $row['refno'] . "</a></td>
                               <td onclick=\"custno('$cuscode', '$stname');\">" . $row['srdate'] . "</a></td>
+                              <td onclick=\"custno('$cuscode', '$stname');\">" . $row['labref'] . "</a></td>
                               <td onclick=\"custno('$cuscode', '$stname');\">" . $row['patientno'] . "</a></td>
                            
                             </tr>";

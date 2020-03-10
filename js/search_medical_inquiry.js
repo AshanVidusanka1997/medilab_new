@@ -91,7 +91,7 @@ function passcusresult_quot()
     opener.document.getElementById('date_txt').value = obj.mpdate;
     opener.document.getElementById('xrayno_txt').value = obj.xrayno;
     opener.document.getElementById('subname_txt').value = obj.subname;
-    opener.document.getElementById('name_txt').value = obj.name;
+    opener.document.getElementById('name_txt').value = obj.mpname;
     opener.document.getElementById('sex_txt').value = obj.sex;
     opener.document.getElementById('status_txt').value = obj.status;
     opener.document.getElementById('agency_txt').value = obj.agency;

@@ -32,6 +32,10 @@
                         <span class="fa fa-folder"></span> &nbsp; Print
                     </a>
 
+                     <a onclick="update1();" class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-download"></span> &nbsp; Update
+                    </a>
+
                      <a onclick="cancel();" class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-remove"></span> &nbsp; CANCEL
                     </a> 

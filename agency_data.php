@@ -71,11 +71,17 @@ if ($_GET["Command"] == "save_item") {
 }
 
 if ($_GET["Command"] == "update") {
+
+       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $conn->beginTransaction();
     try {
-        $sql = "update customer set name = '" . $_GET['name'] . "' ,address = '" . $_GET['address'] . "' ,dob = '" . $_GET['dob'] .  "'  where cid = '" . $_GET['cid'] . "'";
+
+ $sql = "update agency set agncode='".$_GET['agn_txt']."', medicaltype='".$_GET['mtype_txt']."', amount='".$_GET['amt_txt']."' where agncode = '" . $_GET['agn_txt'] . "'";
+
         $result = $conn->query($sql);
-//        cid = '" . $_GET['cid'] . "',
-        echo "update";
+
+        $conn->commit();
+        echo "Updated";
     } catch (Exception $e) {
         $conn->rollBack();
         echo $e;

@@ -91,18 +91,8 @@ if ($_GET["Command"] == "update") {
        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
     try {
-      
-
-
 
  $sql = "update country set c_code='".$_GET['ccode_txt']."', c_name='".$_GET['cname_txt']."', c_head='".$_GET['chead_txt']."', amount='".$_GET['amt_txt']."', prefix='".$_GET['short_txt']."', refno='".$_GET['refno_txt']."' where c_code = '" . $_GET['ccode_txt'] . "'";
-
-
-
-
-// echo $sql;
-
-
 
         $result = $conn->query($sql);
 

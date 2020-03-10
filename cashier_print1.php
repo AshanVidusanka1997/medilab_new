@@ -104,33 +104,43 @@ $mid = $_GET["txt_ref"];
   <tr>
     <td></td>
     <td width="5%" align="center" height="15">Amount</td>
-    <td  width="1%" align="left" > : ' . $row12["amount"] . '  </td>
-    <td width="50%" align="left" height="15"></td>
-
+    <td  width="1%" align="left" > : ' . $row1["meditot"] . '  </td>
+    <td width="50%" align="left" height="15"></td> 
   </tr>
-
   <tr>
     <td></td>
     <td width="5%" align="center" height="15"></td>
     <td  width="1%" align="left" >  </td>
     <td width="50%" align="left" height="15"></td>
-
   </tr>
  <tr>
     <td></td>
     <td width="5%" align="center" height="15">Paid</td>
     <td  width="1%" align="left" > : ' . $row1["paid_amt"] . '</td>
     <td width="50%" align="left" height="15"> </td>
-
   </tr>
   <tr>
     <td></td>
     <td width="5%" align="center" height="15">Agent</td>
     <td  width="1%" align="left" > : ' . $row1["agname"] . ' </td>
     <td width="50%" align="left" height="15"> </td>
+  </tr>';
+
+                 if ($row1["refamt"] == "0"  || $row1["refamt"] == "") {
+
+
+                 }else{
+                    echo'
+                 <tr>
+                  <td></td>
+                  <td width="5%" align="center" height="15">Refund</td>
+                  <td  width="1%" align="left" > : ' . $row1["refamt"] . ' </td>
+                  <td width="50%" align="left" height="15"> </td>';
+                 }
+
+    echo '
 
   </tr>
-
 </table>
 
 <table style="width:100%">
@@ -138,12 +148,24 @@ $mid = $_GET["txt_ref"];
     <td></td>
     <td width="100%" height="20"><b style="MARGIN-left: 10PX;"><u>Test</u></b> </td>
   </tr>';
-if ($row1["newref"] == "" ||  $row1["newref"] == "NM") { 
-}else{
-  echo '<tr>
-    <td></td>
-    <td width="100%" height="20"><b style="MARGIN-left: 10PX;">' . $row12["mediDescript"] . '</b> </td>
-  </tr>';
+                if ($row1["newref"] == "" ||  $row1["newref"] == "NM") { 
+                }else{                
+                
+
+                $sql12 = "SELECT * FROM mediprint_main where refno = '" . $mid . "'";                
+
+                            echo '<tr>
+                              <td></td>
+                              <td colspan=2 width="40px" height="20" >';                
+
+                              $temp = "";
+                        foreach ($conn->query($sql12) as $row) {
+                           $temp = $temp ." : ". $row["mediDescript"];                
+
+                        }
+                            echo '<font size="2"><b style="MARGIN-left: 10PX;">' . substr($temp,2) . '</b></font>';
+                            echo '</td>
+                            </tr>';
 }
 echo'
 <tr>

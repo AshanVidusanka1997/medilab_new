@@ -64,8 +64,7 @@ if ($_GET["Command"] == "getlab") {
     $ResponseXML = "";
     $ResponseXML .= "<new>";
 
-    if ($_GET['txt_newref']=="NM") {
-        $sqlauto = "SELECT labno,date1 FROM invpara";
+    $sqlauto = "SELECT labno,date1 FROM invpara";
     $resultauto = $conn->query($sqlauto);
     $rowauto = $resultauto->fetch();
 
@@ -76,22 +75,27 @@ if ($_GET["Command"] == "getlab") {
         $result11 = $conn->query($sql11);
     }
 
+    if ($_GET['txt_newref']=="NM") {
+       
+
+   
     $sql = "SELECT labno FROM invpara";
     $result = $conn->query($sql);
     $row = $result->fetch();
     $no = $row['labno'];
  
  
-    $tmpinvno = "NM/000" . $no;
+    $tmpinvno = "00000" . $no;
     $lenth = strlen($tmpinvno);
-    $no = substr($tmpinvno, $lenth - 7);
+    $no =trim("NM/"). substr($tmpinvno, $lenth -7);
 
   
         # code...
     }
 
     if ($_GET['txt_newref']=="RC") {
-        $sqlauto = "SELECT rcno,date1 FROM invpara";
+    
+    $sqlauto = "SELECT rcno,date1 FROM invpara";
     $resultauto = $conn->query($sqlauto);
     $rowauto = $resultauto->fetch();
 
@@ -102,9 +106,9 @@ if ($_GET["Command"] == "getlab") {
     $no = $row['rcno'];
  
  
-    $tmpinvno = "RC/000" . $no;
-    $lenth = strlen($tmpinvno);
-    $no = substr($tmpinvno, $lenth - 7);
+    $tmpinvno = "00000" . $no;
+    $lenth =  strlen($tmpinvno);
+    $no =trim("RC/"). substr($tmpinvno, $lenth - 7);
         # code...
     }
 
@@ -120,10 +124,12 @@ if ($_GET["Command"] == "getlab") {
     $row = $result->fetch();
     $no = $row['mmrno'];
  
- 
-    $tmpinvno = "MR/000" . $no;
-    $lenth = strlen($tmpinvno);
-    $no = substr($tmpinvno, $lenth - 7);
+
+
+
+    $tmpinvno = "00000" . $no;
+    $lenth =  strlen($tmpinvno);
+    $no =trim("MMR/"). substr($tmpinvno, $lenth - 7);
         # code...
     }
 
@@ -156,16 +162,16 @@ if ($_GET["Command"] == "save_item") {
         $no = trim("SR/") . substr($tmpinvno, $lenth - 7);
 
       
-        $sql1 = "select * from sregdetails where refno = '" . $_GET['txt_refno'] . "'";
+        // $sql1 = "select * from sregdetails where refno = '" . $_GET['txt_refno'] . "'";
 
-        $result1 = $conn->query($sql1);
+        // $result1 = $conn->query($sql1);
         
-        if ($row1 = $result1->fetch()) {
-            exit("Duplicated ....!!!");
-        } 
+        // if ($row1 = $result1->fetch()) {
+        //     exit("Duplicated ....!!!");
+        // } 
 
-         $sql1 = "Insert into sregdetails(refno,srdate,patientno,fname,lastname,age_years,age_months,bdate,sex,nation,country,countryname,no_chid,lastchildage,medicode,mediname,medistatus,meditype,agname,dest,xrayno,serino,PLA_OF_IS,gno,POS_APP,gccno,address,dtisu,med_time,remaks,labref,newref,finger1,finger2,cheqno,cheq_amt,cheq_date,csh_amt,paid_amt,bank,refamt,dt_refund,gflag,img,uniq,serialNo,H,W,DPI,Quality,NFIQ,Tempbase)values 
-                      ('" .$no. "','" . $_GET['txt_srdate']. "','" . $_GET['txt_patno']. "','" . $_GET['txt_fname']. "','" . $_GET['txt_lname']. "','" . $_GET['txt_ageyrs']. "','" . $_GET['txt_agemnths']. "','" . $_GET['txt_dob']. "','" . $_GET['txt_gender']. "','" . $_GET['txt_nation']. "','" . $_GET['txt_count']. "','" . $_GET['txt_countname']. "','" . $_GET['txt_nochld']. "','" . $_GET['txt_lchldage']. "','" . $_GET['txt_medicode']. "','" . $_GET['txt_mediname']. "','" . $_GET['txt_cusadd']. "','" . $_GET['txt_type']. "','" . $_GET['agname_txt']. "','" . $_GET['txt_dest']. "','" . $_GET['txt_xrayno']. "','" . $_GET['txt_serino']. "','" . $_GET['txt_pla_of_iss']. "','" . $_GET['txt_gno']. "','" . $_GET['txt_posapp']. "','" . $_GET['txt_gccno']. "','" . $_GET['txt_cusadd']. "','" . $_GET['txt_dtofissu']. "','" . $_GET['txt_time']. "','" . $_GET['txt_rem']. "','" . $_GET['txt_labref']. "','" . $_GET['txt_newref']. "','" . $_GET['txt_fn1']. "','" . $_GET['txt_fn2']. "','" . $_GET['txt_cheqno']. "','" . $_GET['txt_cheqamt']. "','" . $_GET['txt_cheqdt']. "','" . $_GET['txt_cash']. "','" . $_GET['txt_paid']. "','" . $_GET['txt_bank']. "','" . $_GET['txt_rfamt']. "','" . $_GET['txt_rfdt']. "','" . $_GET['gflag']. "','" . $_GET['uniq']. ".jpg','" . $_GET['uniq'] . "','" . $_GET['SerialNumber']. "','" . $_GET['ImageHeight']. "','" . $_GET['ImageWidth']. "','" . $_GET['ImageDPI']. "','" . $_GET['ImageQuality']. "','" . $_GET['NFIQ']. "','" . $_GET['TemplateBase64_txt']. "')";
+         $sql1 = "Insert into sregdetails(refno,srdate,patientno,fname,lastname,age_years,age_months,bdate,sex,nation,country,countryname,no_chid,lastchildage,medicode,mediname,medistatus,meditype,agname,dest,xrayno,serino,PLA_OF_IS,gno,POS_APP,gccno,address,dtisu,med_time,remaks,labref,newref,finger1,finger2,cheqno,cheq_amt,cheq_date,csh_amt,paid_amt,bank,refamt,dt_refund,gflag,img,uniq,serialNo,H,W,DPI,Quality,NFIQ,Tempbase,meditot)values 
+                      ('" .$no. "','" . $_GET['txt_srdate']. "','" . $_GET['txt_patno']. "','" . $_GET['txt_fname']. "','" . $_GET['txt_lname']. "','" . $_GET['txt_ageyrs']. "','" . $_GET['txt_agemnths']. "','" . $_GET['txt_dob']. "','" . $_GET['txt_gender']. "','" . $_GET['txt_nation']. "','" . $_GET['txt_count']. "','" . $_GET['txt_countname']. "','" . $_GET['txt_nochld']. "','" . $_GET['txt_lchldage']. "','" . $_GET['txt_medicode']. "','" . $_GET['txt_mediname']. "','" . $_GET['txt_cusadd']. "','" . $_GET['txt_type']. "','" . $_GET['agname_txt']. "','" . $_GET['txt_dest']. "','" . $_GET['txt_xrayno']. "','" . $_GET['txt_serino']. "','" . $_GET['txt_pla_of_iss']. "','" . $_GET['txt_gno']. "','" . $_GET['txt_posapp']. "','" . $_GET['txt_gccno']. "','" . $_GET['txt_cusadd']. "','" . $_GET['txt_dtofissu']. "','" . $_GET['txt_time']. "','" . $_GET['txt_rem']. "','" . $_GET['txt_labref']. "','" . $_GET['txt_newref']. "','" . $_GET['txt_fn1']. "','" . $_GET['txt_fn2']. "','" . $_GET['txt_cheqno']. "','" . $_GET['txt_cheqamt']. "','" . $_GET['txt_cheqdt']. "','" . $_GET['txt_cash']. "','" . $_GET['txt_paid']. "','" . $_GET['txt_bank']. "','" . $_GET['txt_rfamt']. "','" . $_GET['txt_rfdt']. "','" . $_GET['gflag']. "','" . $_GET['txt_patno']. ".jpg','" . $_GET['uniq'] . "','" . $_GET['SerialNumber']. "','" . $_GET['ImageHeight']. "','" . $_GET['ImageWidth']. "','" . $_GET['ImageDPI']. "','" . $_GET['ImageQuality']. "','" . $_GET['NFIQ']. "','" . $_GET['TemplateBase64_txt']. "','" . $_GET['medi_amounttot']. "')";
 
            // Table1
         
@@ -177,7 +183,7 @@ if ($_GET["Command"] == "save_item") {
             for ($i=0; $i < $size1 ; $i++) { 
                 $tableArysub = $tableAry1[$i];
                 $sql = "Insert into mediprint_main(refno,passportNo,mediDescript,uniq,amount)values
-                        ('" . $_GET['txt_refno'] . "','" . $_GET['txt_patno'] . "','" . $tableAry1[$i][Medical_Description] . "','" . $_GET['uniq'] . "','" . $tableAry1[$i][Amount] . "')";
+                        ('" .$no . "','" . $_GET['txt_patno'] . "','" . $tableAry1[$i][Medical_Description] . "','" . $_GET['uniq'] . "','" . $tableAry1[$i][Amount] . "')";
                 $result = $conn->query($sql);
 
             }
@@ -196,15 +202,7 @@ if ($_GET["Command"] == "save_item") {
         $sql = "update invpara set regicode = $no2 where regicode = $no";
         $result = $conn->query($sql);
 
-         if ($_GET['txt_newref']=="RC") {
-        $sql = "SELECT labno FROM invpara";
-        $result = $conn->query($sql);
-        $row = $result->fetch();
-        $no = $row['labno'];
-        $no2 = $no + 1;
-        $sql = "update invpara set labno = $no2 where labno = $no";
-        $result = $conn->query($sql);
-        }
+         
 
         if ($_GET['txt_newref']=="RC") {
 
@@ -216,9 +214,7 @@ if ($_GET["Command"] == "save_item") {
         $sql = "update invpara set rcno = $no2 where rcno = $no";
         $result = $conn->query($sql);
 
-        }
-
-        if ($_GET['txt_newref']=="MMR") {
+        }elseif($_GET['txt_newref']=="MMR"){
             
         $sql = "SELECT mmrno FROM invpara";
         $result = $conn->query($sql);
@@ -228,6 +224,15 @@ if ($_GET["Command"] == "save_item") {
         $sql = "update invpara set mmrno = $no2 where mmrno = $no";
         $result = $conn->query($sql);
 
+        }else{
+
+        $sql = "SELECT labno FROM invpara";
+        $result = $conn->query($sql);
+        $row = $result->fetch();
+        $no = $row['labno'];
+        $no2 = $no + 1;
+        $sql = "update invpara set labno = $no2 where labno = $no";
+        $result = $conn->query($sql);
         }
 
         $sql11 = "update invpara set date1 ='" .  $date1 . "' ";   
@@ -266,7 +271,7 @@ if ($_GET["Command"] == "update_item") {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $conn->beginTransaction();
     try {
-        $sql = "update sregdetails set srdate = '" . $_GET['txt_srdate'] . "' ,  patientno = '" . $_GET['txt_patno'] . "' , fname = '" . $_GET['txt_fname'] . "' , lastname = '" . $_GET['txt_lname'] . "' , age_years = '" . $_GET['txt_ageyrs'] . "' , age_months = '" . $_GET['txt_agemnths'] . "' , bdate = '" . $_GET['txt_dob'] . "' , sex = '" . $_GET['txt_gender'] . "' , nation = '" . $_GET['txt_nation'] . "' , country = '" . $_GET['txt_count'] . "' , countryname = '" . $_GET['txt_countname'] . "' , no_chid = '" . $_GET['txt_nochld'] . "' , lastchildage = '" . $_GET['txt_lchldage'] . "' , medicode = '" . $_GET['txt_medicode'] . "' , mediname = '" . $_GET['txt_mediname'] . "' , medistatus = '" . $_GET['txt_cusadd'] . "' , agname = '" . $_GET['agname_txt'] . "' , meditype = '" . $_GET['txt_type'] . "' , dest = '" . $_GET['txt_dest'] . "' , xrayno = '" . $_GET['txt_xrayno'] . "' , serino = '" . $_GET['txt_serino'] . "' , PLA_OF_IS = '" . $_GET['txt_pla_of_iss '] . "' , gno = '" . $_GET['txt_gno'] . "' , POS_APP = '" . $_GET['txt_posapp'] . "' , gccno = '" . $_GET['txt_gccno'] . "' , address = '" . $_GET['txt_cusadd'] . "' , dtisu = '" . $_GET['txt_dtofissu'] . "' , med_time = '" . $_GET['txt_time'] . "' , remaks = '" . $_GET['txt_rem'] . "' , labref = '" . $_GET['txt_labref'] . "' , newref = '" . $_GET['txt_newref'] . "' , finger1 = '" . $_GET['txt_fn1'] . "' , cheqno = '" . $_GET['txt_cheqno'] . "' , cheq_amt = '" . $_GET['txt_cheqamt'] . "' , cheq_date = '" . $_GET['txt_cheqdt'] . "' , csh_amt = '" . $_GET['txt_cash'] . "' , PLA_OF_IS = '" . $_GET['txt_pla_of_iss'] . "' , bank = '" . $_GET['txt_bank'] . "' , refamt = '" . $_GET['txt_rfamt'] . "' , dt_refund = '" . $_GET['txt_rfdt'] . "',serialNo = '" . $_GET['SerialNumber'] . "',H = '" . $_GET['ImageHeight'] . "',W = '" . $_GET['ImageWidth'] . "', DPI = '" . $_GET['ImageDPI'] . "', Quality = '" . $_GET['ImageQuality'] . "',NFIQ = '" . $_GET['NFIQ'] . "',Tempbase = '" . $_GET['TemplateBase64_txt'] . "',paid_amt = '" . $_GET['txt_paid'] . "' where refno = '" . $_GET['txt_refno'] . "'";
+        $sql = "update sregdetails set srdate = '" . $_GET['txt_srdate'] . "' ,  patientno = '" . $_GET['txt_patno'] . "' , fname = '" . $_GET['txt_fname'] . "' , lastname = '" . $_GET['txt_lname'] . "' , age_years = '" . $_GET['txt_ageyrs'] . "' , age_months = '" . $_GET['txt_agemnths'] . "' , bdate = '" . $_GET['txt_dob'] . "' , sex = '" . $_GET['txt_gender'] . "' , nation = '" . $_GET['txt_nation'] . "' , country = '" . $_GET['txt_count'] . "' , countryname = '" . $_GET['txt_countname'] . "' , no_chid = '" . $_GET['txt_nochld'] . "' , lastchildage = '" . $_GET['txt_lchldage'] . "' , medicode = '" . $_GET['txt_medicode'] . "' , mediname = '" . $_GET['txt_mediname'] . "' , medistatus = '" . $_GET['txt_cusadd'] . "' , agname = '" . $_GET['agname_txt'] . "' , meditype = '" . $_GET['txt_type'] . "' , dest = '" . $_GET['txt_dest'] . "' , xrayno = '" . $_GET['txt_xrayno'] . "' , serino = '" . $_GET['txt_serino'] . "' , PLA_OF_IS = '" . $_GET['txt_pla_of_iss '] . "' , gno = '" . $_GET['txt_gno'] . "' , POS_APP = '" . $_GET['txt_posapp'] . "' , gccno = '" . $_GET['txt_gccno'] . "' , address = '" . $_GET['txt_cusadd'] . "' , dtisu = '" . $_GET['txt_dtofissu'] . "' , med_time = '" . $_GET['txt_time'] . "' , remaks = '" . $_GET['txt_rem'] . "' , labref = '" . $_GET['txt_labref'] . "' , newref = '" . $_GET['txt_newref'] . "' , finger1 = '" . $_GET['txt_fn1'] . "' , cheqno = '" . $_GET['txt_cheqno'] . "' , cheq_amt = '" . $_GET['txt_cheqamt'] . "' , cheq_date = '" . $_GET['txt_cheqdt'] . "' , csh_amt = '" . $_GET['txt_cash'] . "' , PLA_OF_IS = '" . $_GET['txt_pla_of_iss'] . "' , bank = '" . $_GET['txt_bank'] . "' , refamt = '" . $_GET['txt_rfamt'] . "' , dt_refund = '" . $_GET['txt_rfdt'] . "',serialNo = '" . $_GET['SerialNumber'] . "',H = '" . $_GET['ImageHeight'] . "',W = '" . $_GET['ImageWidth'] . "', DPI = '" . $_GET['ImageDPI'] . "', Quality = '" . $_GET['ImageQuality'] . "',NFIQ = '" . $_GET['NFIQ'] . "',Tempbase = '" . $_GET['TemplateBase64_txt'] . "',paid_amt = '" . $_GET['txt_paid'] . "',meditot = '" . $_GET['medi_amounttot'] . "' where refno = '" . $_GET['txt_refno'] . "'";
 
         
 

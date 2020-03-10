@@ -110,7 +110,7 @@ function passcusresult_quot()
         opener.document.getElementById('doctor4_txt').value = obj.remark1_np;
          opener.document.getElementById('doctor5_txt').value = obj.remark2_np;
 
-         //  opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + vobj.img + "\" alt=\"\">";
+           opener.document.getElementById('getImg').innerHTML = "<img width=\"200\" src=\"img\/" + obj.img + "\" alt=\"\">";
         
                    
 

@@ -88,6 +88,13 @@ function passcusresult_quot()
 
         // opener.document.getElementById('cou_name_txt').value = obj.c_name;
        
+        var rowCount = window.opener.document.getElementById('myTable').rows;
+
+
+        var tot = 0;
+                for (i = 0; i < rowCount.length; i++) { 
+                    tot = tot + parseFloat(rowCount[i].cells[1].innerHTML) || 0;
+                }
 
         XMLAddress1 = xmlHttp.responseXML.getElementsByTagName("k");
         
@@ -95,8 +102,13 @@ function passcusresult_quot()
 
         window.opener.document.getElementById("code"+k).innerHTML = obj.medicaltype;
         window.opener.document.getElementById("name"+k).innerHTML = obj.amount;
+
+        // window.opener.document.getElementById("txt_cheqamt").innerHTML = tot;
         
-        self.close();
+
+
+
+         self.close();
     }
 
 
